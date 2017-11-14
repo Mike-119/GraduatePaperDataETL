@@ -27,8 +27,8 @@ public class AllCommitExtract {
 	public void extractAllCommit() {
 		JSONParser parser = new JSONParser();
 		try {
-			// File file=new File("D:\\test");
-			File file = new File("/home/mike/graduateDesign/1108/allCommitPages");
+			File file=new File("D:\\test");
+//			File file = new File("/home/mike/graduateDesign/1114/allCommitPages");
 			File[] files = file.listFiles();
 			String path;
 			String fileName;
@@ -50,10 +50,12 @@ public class AllCommitExtract {
 						authorName = (String) author.get("name");
 						authorEmail = (String) author.get("email");
 						reviseDate = (String) author.get("date");
+						reviseDate = reviseDate.replace("T", " ").replace("Z", "");
 						JSONObject committer = (JSONObject) commit.get("committer");
 						committerName = (String) committer.get("name");
 						committerEmail = (String) committer.get("email");
 						commitDate = (String) committer.get("date");
+						commitDate = commitDate.replace("T", " ").replace("Z", "");
 						JSONArray parents = (JSONArray) obj.get("parents");
 						JSONObject parent = (JSONObject) parents.get(0);
 						parentSha = (String) parent.get("sha");
