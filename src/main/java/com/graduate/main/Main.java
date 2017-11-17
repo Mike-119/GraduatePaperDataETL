@@ -5,8 +5,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-     AllCommitExtract allcommit=new AllCommitExtract();
-     allcommit.extractAllCommit();
+//     AllCommitExtract allcommit=new AllCommitExtract();
+//     allcommit.extractAllCommit();
+     
+		SingleCommitDetail singleCommit=new SingleCommitDetail();
+		singleCommit.getCommitDetail();
 	}
 
 }

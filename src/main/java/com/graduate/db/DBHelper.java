@@ -13,8 +13,13 @@ public class DBHelper {
     private PreparedStatement preparedStatement=null;
     private Statement statement=null;
     private ResultSet result=null;
-    private String url="jdbc:mysql://localhost:3306/graduatePaper?"
+	private String url="jdbc:mysql://localhost:3306/graduatePaper?"
             + "user=root&password=050105&useUnicode=true&useSSL=false&characterEncoding=UTF8";
+    
+    public ResultSet getResult() {
+		return result;
+	}
+    
     
     public DBHelper()throws Exception
     {
@@ -32,6 +37,27 @@ public class DBHelper {
     {
     	preparedStatement=connect.prepareStatement(sql);
     	preparedStatement.execute();
+    }
+    
+    public void insert(String sql,String[] par1,long[] par2)throws Exception
+    {
+    	preparedStatement=connect.prepareStatement(sql);
+    	for(int i=0;i<5;i++)
+    	{
+    		preparedStatement.setString(i+1,par1[i]);
+    	}
+    	for(int i=0;i<3;i++)
+    	{
+    		preparedStatement.setLong(i+6,par2[i]);
+    	}  
+//    	System.out.println(preparedStatement);
+    	preparedStatement.execute();
+    }
+    
+    public ResultSet query(String sql)throws Exception
+    {
+    	preparedStatement=connect.prepareStatement(sql);
+    	return preparedStatement.executeQuery();
     }
     
     
