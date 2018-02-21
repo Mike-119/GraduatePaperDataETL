@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class DBHelper {
@@ -39,16 +40,20 @@ public class DBHelper {
     	preparedStatement.execute();
     }
     
-    public void insert(String sql,String[] par1,long[] par2)throws Exception
+    public void insert(String sql,String[] par1,Timestamp[] par2,long[] par3)throws Exception
     {
     	preparedStatement=connect.prepareStatement(sql);
-    	for(int i=0;i<5;i++)
+    	for(int i=0;i<6;i++)
     	{
     		preparedStatement.setString(i+1,par1[i]);
     	}
+    	for(int i=0;i<2;i++)
+    	{
+    		preparedStatement.setTimestamp(i+7,par2[i]);
+    	}
     	for(int i=0;i<3;i++)
     	{
-    		preparedStatement.setLong(i+6,par2[i]);
+    		preparedStatement.setLong(i+9,par3[i]);
     	}  
 //    	System.out.println(preparedStatement);
     	preparedStatement.execute();
