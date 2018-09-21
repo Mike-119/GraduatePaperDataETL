@@ -14,6 +14,11 @@ import java.util.Iterator;
 
 import java.io.File;
 
+/**
+ **从本地获取到的项目提交详情页(每个page100条数据)中获取一条条的commit信息
+ * @author guo
+ *
+ */
 public class AllCommitExtract {
 	String sha;
 	String authorName;
@@ -27,8 +32,8 @@ public class AllCommitExtract {
 	public void extractAllCommit() {
 		JSONParser parser = new JSONParser();
 		try {
-			File file=new File("D:\\test");
-//			File file = new File("/home/mike/graduateDesign/1114/allCommitPages");
+//			File file=new File("D:\\test");
+			File file = new File("/home/mike/graduateDesign/commitPages/20180223/");
 			File[] files = file.listFiles();
 			String path;
 			String fileName;
@@ -61,7 +66,7 @@ public class AllCommitExtract {
 						parentSha = (String) parent.get("sha");
 
 						// System.out.println(sha+","+authorName+","+"authorEmail"+","+reviseDate+","+committerName+","+committerEmail+","+commitDate+","+parentSha);
-						String sql = "insert into allCommit values(\"" + fileName + "\",\"" + sha + "\",\"" + authorName
+						String sql = "insert into allCommitNew values(\"" + fileName + "\",\"" + sha + "\",\"" + authorName
 								+ "\",\"" + authorEmail + "\",\"" + reviseDate + "\",\"" + committerName + "\",\""
 								+ committerEmail + "\",\"" + commitDate + "\",\"" + parentSha + "\")";
 						try {

@@ -1,6 +1,7 @@
 package com.graduate.main;
 
 import com.graduate.commitData.*;
+import com.graduate.graduationTime.GetGraduationTime;
 
 public class Main {
 
@@ -12,10 +13,18 @@ public class Main {
 //		SingleCommitDetail singleCommit=new SingleCommitDetail();
 //		singleCommit.getCommitDetail();
 		
+//		CommitDetailFromLocalSplit detail = new CommitDetailFromLocalSplit();
+//		detail.getCommitDetail();
 		
-		CommitDetailFromLocalPre detail = new CommitDetailFromLocalPre();
-		detail.getCommitDetail();
+		WatchStarFork watchStarFork = new WatchStarFork();
+		System.out.println(args[0]);
+		System.out.println(args[1]);
+		watchStarFork.getWatchStarFork(args[0], args[1]);
+		
+//		GetGraduationTime graduation = new GetGraduationTime();
+//		graduation.getTime("D:\\graduationTime.txt");
 		System.out.println("normal exit,all have finished!");
+		
 		
 		
 	}

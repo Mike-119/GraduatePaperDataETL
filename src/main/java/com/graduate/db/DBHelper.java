@@ -14,7 +14,7 @@ public class DBHelper {
     private PreparedStatement preparedStatement=null;
     private Statement statement=null;
     private ResultSet result=null;
-	private String url="jdbc:mysql://localhost:3306/graduatePaper?"
+	private String url="jdbc:mysql://localhost:3306/guoshixin?"
             + "user=root&password=050105&useUnicode=true&useSSL=false&characterEncoding=UTF8";
     
     public ResultSet getResult() {
@@ -54,6 +54,25 @@ public class DBHelper {
     	for(int i=0;i<3;i++)
     	{
     		preparedStatement.setLong(i+9,par3[i]);
+    	}  
+//    	System.out.println(preparedStatement);
+    	preparedStatement.execute();
+    }
+    
+    public void insertStarForkWatch(String sql,String[] par1,long[] par2,Timestamp[] par3)throws Exception
+    {
+    	preparedStatement=connect.prepareStatement(sql);
+    	for(int i=0;i<1;i++)
+    	{
+    		preparedStatement.setString(i+1,par1[i]);
+    	}
+    	for(int i=0;i<4;i++)
+    	{
+    		preparedStatement.setLong(i+2,par2[i]);
+    	}
+    	for(int i=0;i<1;i++)
+    	{
+    		preparedStatement.setTimestamp(i+6,par3[i]);
     	}  
 //    	System.out.println(preparedStatement);
     	preparedStatement.execute();
